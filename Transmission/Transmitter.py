@@ -40,6 +40,9 @@ class Transmitter:
         self.threads.append(threading.Thread(target=self.prepareDataToTransmit(), name="prepareDataToTransmit"))
         self.threads.append(threading.Thread(target=self.transmit(), name="transmitter"))
 
+        for th in self.threads:
+            th.start()
+
     def record(self):
         def callback():
             self.recordedDataQueue.put(0)
